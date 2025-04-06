@@ -1,6 +1,9 @@
 from flask import Flask, jsonify
 import os
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config['API_KEY'] = os.getenv('API_KEY')
@@ -12,6 +15,7 @@ LAT, LON = "40.7128", "-74.0060"
 def get_weather():
     url = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={API_KEY}&units=imperial"
     response = requests.get(url).json()
+    print(response)  # Debugging line to check the response
     temp = response["main"]["temp"]
     rain = response.get("rain", {}).get("1h", 0)  # Rain in last hour
     return temp, rain
