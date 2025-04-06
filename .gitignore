@@ -1,0 +1,24 @@
+# Ignore .env files that contain sensitive data
+.env
+.env.*
+*.env
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore Docker files (optional, if not needed in repo)
+docker-compose.override.yml
+Dockerfile*
+
+# Ignore IDE-specific files (optional, if not needed in repo)
+.idea/
+.vscode/
+
+# Ignore other sensitive or system-specific files
+*.log
+*.swp
