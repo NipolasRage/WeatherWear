@@ -199,4 +199,4 @@ def what_to_wear():
 
 
 if __name__ == "__main__":
-    print(get_clothing_suggestion_with_gemini())
+    app.run(host="0.0.0.0", port=5000)
