@@ -39,8 +39,6 @@ def get_clothing_suggestion():
 
     suggestion = []
 
-    print(f"Max Temp: {max_temp}, Min Temp: {min_temp}, Will Rain: {will_rain}, Will Snow: {will_snow}, Heavy Rain: {heavy_rain}")
-    print(f"Rain Amounts: {rain_amounts}")
     if min_temp < 20:
         suggestion.append("thermal underwear")
         suggestion.append("heavy coat")
