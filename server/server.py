@@ -32,9 +32,9 @@ def get_clothing_suggestion():
     forecast = get_today_forecast()
     max_temp = max(hour['main']['temp'] for hour in forecast)
     min_temp = min(hour['main']['temp'] for hour in forecast)
-    will_rain = any('rain' in hour for hour in forecast)
     will_snow = any('snow' in hour for hour in forecast)
     rain_amounts = [hour.get('rain', {}).get('3h', 0) for hour in forecast if 'rain' in hour]
+    medium_rain = any(2 < r <= 5 for r in rain_amounts)
     heavy_rain = any(r > 5 for r in rain_amounts)
 
     suggestion = []
@@ -52,12 +52,14 @@ def get_clothing_suggestion():
     elif max_temp > 75:
         suggestion.append("t-shirt")
         suggestion.append("shorts")
-    elif max_temp < 65:
+    elif max_temp < 50:
         suggestion.append("warm jacket")
+    elif max_temp < 60:
+        suggestion.append("sweater")
     else:
         suggestion.append("warm-comfortable clothes")
 
-    if will_rain:
+    if medium_rain:
         suggestion.append("rain jacket")
     if heavy_rain:
         suggestion.append("umbrella")
